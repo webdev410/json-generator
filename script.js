@@ -11,6 +11,8 @@ const valueEl = document.getElementById("value");
 const addBtn = document.getElementById("add-another");
 const jsonResult = document.querySelector("#jsonResult");
 const deleteBtn = document.querySelectorAll('.deleteBtn')
+const generateBtn = document.getElementById('generateBtn')
+
 let finalJson;
 
 function addKeyValue(event) {
@@ -21,6 +23,7 @@ function addKeyValue(event) {
     const newKey = document.createElement("input");
     const newValue = document.createElement("input");
     const deleteBtn = document.createElement('button')
+
 
     newFormGroup.classList.add('kv-pair')
     deleteBtn.classList.add('deleteBtn')
@@ -43,6 +46,10 @@ function addKeyValue(event) {
 
     additionalFields.classList.add("form-group");
     additionalFields.appendChild(newFormGroup);
+
+    if (additionalFields.childElementCount > 0) {
+        generateBtn.classList.remove('hide')
+    }
 
 }
 
