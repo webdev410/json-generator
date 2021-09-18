@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <link rel="stylesheet" href="/css/tailwind.css">
-    <link rel="stylesheet" href="font-awesome.css">
-    <link rel="stylesheet" href="style.css">
+   <!-- <link rel="stylesheet" href="css/monotony.css"> -->
+   <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fa-all.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>JSON Generator</title>
 </head>
 
@@ -19,30 +19,35 @@
         <a href="form.html">FORM</a>
     </nav>
 
-    <button id="add-another"><i class="fal fa-plus"></i>Add Key/Value Pair</button>
-    <form id="json-form">
+    <button class="btn btn-primary" id="add-another"><i class="fal fa-plus"></i>Add Key/Value Pair</button>
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="json-form">
         <div class="form-group keyValuePairGroup"></div>
         <div id="additionalFields"></div>
         <div class="form-group">
 
-            <button type="submit"><i class="fal fa-file-plus"></i>Generate JSON</button>
+            <button  class="btn btn-primary"type="submit"><i class="fal fa-file-plus"></i>Generate JSON</button>
         </div>
     </form>
 
     <div id="mongo-buttons">
         <h2>Mongo Statements</h2>
-        <button>Route - Create</button>
-        <button>Route - Get One</button>
-        <button>Route - Get All</button>
-        <button>Route - Update One</button>
-        <button>Route - Update All</button>
-        <button>Route - Delete One</button>
-        <button>Route - Delete All</button>
+        <button class="btn btn-primary">Route - Create</button>
+        <button class="btn btn-primary">Route - Get One</button>
+        <button class="btn btn-primary">Route - Get All</button>
+        <button class="btn btn-primary">Route - Update One</button>
+        <button class="btn btn-primary">Route - Update All</button>
+        <button class="btn btn-primary">Route - Delete One</button>
+        <button class="btn btn-primary">Route - Delete All</button>
     </div>
 
+<div class="container-fluid">
 
-    <!-- JSON RESULTS -->
-    <pre id="jsonResult"> </pre>
+    <div class="row justify-content-center">
+        <!-- JSON RESULTS -->
+        <pre class="hide col-12 col-md-6 col-lg-4" id="jsonResult"> </pre>
+
+    </div>
+</div>
 
 
     <script src="script.js"></script>

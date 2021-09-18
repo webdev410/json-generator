@@ -9,6 +9,7 @@ const additionalFields = document.getElementById('additionalFields')
 const keyEl = document.getElementById('key')
 const valueEl = document.getElementById('value')
 const addBtn = document.getElementById('add-another')
+const jsonResult = document.querySelector("#jsonResult")
 
 function addKeyValue(e) {
     e.preventDefault()
@@ -44,18 +45,21 @@ function generateJson(event) {
         outputObj[inputs[i].value] = inputs[i + 1].value
     }
 
-    if (inputs.value === '') {
-        console.log('null fields')
+
+    if (inputs.length === 0) {
+        alert("You must add at least one key/value pair")
+        return
     }
+
     console.log(JSON.stringify(outputObj, null, 2))
 
 
     // create final json object
     let finalJson = (JSON.stringify(outputObj, null, 2))
     // add to div
-    document.querySelector("#jsonResult").textContent = finalJson
+    jsonResult.textContent = finalJson
 
-
+jsonResult.classList.remove('hide')
 
 }
 
