@@ -51,25 +51,31 @@ function generateJson(event) {
 
     // if key is empty, throw error
     let key = document.querySelectorAll('.key')
-    console.log("Key Length: ", key.length)
+    // console.log("Key Length: ", key.length)
 
     for (var i = 0; i < key.length; i++) {
-        console.log("Value: ", key[i].value)
+        // console.log("Value: ", key[i].value)
         if (!key[i].value) {
             console.log('key-value is empty')
             alert('please remove unused inputs')
             return
 
         }
-
-        //         if (key.value.length === 0) {
-        //             return
-        //         } else {
-        // 
-        //             // console.log(key[i].value.length)
-        //         }
     }
+    // create copy button
+    let row = document.createElement('div')
+    row.classList.add('row')
+    row.classList.add('justify-content-end')
 
+    let copyBtn = document.createElement('button')
+    copyBtn.textContent = "Copy"
+    copyBtn.classList.add('copyBtn')
+    copyBtn.classList.add('btn-light')
+    copyBtn.classList.add('btn-sm')
+    copyBtn.innerHTML = '<i class="fal fa-copy"></i>'
+    copyBtn.setAttribute('onClick', 'copyText()')
+
+    row.appendChild(copyBtn)
 
 
     const outputObj = {};
@@ -92,18 +98,32 @@ function generateJson(event) {
 
     // add to div
     jsonResult.textContent = finalJson;
+    jsonResult.appendChild(row)
     // show json object
     jsonResult.classList.remove("hide");
+    copyBtn.classList.remove("hide");
 }
 
 function deleteItem(itemId, formId) {
     event.preventDefault()
 
-
     let deleteDiv = document.querySelector('.kv-pair')
     if (itemId === formId) {
         deleteDiv.remove()
     }
+}
+
+function copyText() {
+    let range = document.createRange()
+    range.selectNode(jsonResult);
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
+
+
+    alert("Copied!")
 }
 
 
