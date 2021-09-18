@@ -23,15 +23,14 @@ function addKeyValue(event) {
     const deleteBtn = document.createElement('button')
 
     newFormGroup.classList.add('kv-pair')
-    newFormGroup.setAttribute('data-item-id', additionalFields.childElementCount + 1)
-    deleteBtn.setAttribute('data-item-id', additionalFields.childElementCount + 1)
-
     deleteBtn.classList.add('deleteBtn')
-    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'
+    deleteBtn.innerHTML = '<i class="fas fa-trash-alt deleteBtn"></i>'
 
     newKey.classList.add("key");
     newValue.classList.add("value");
 
+    newFormGroup.setAttribute('data-item-id', additionalFields.childElementCount + 1)
+    deleteBtn.setAttribute('data-item-id', additionalFields.childElementCount + 1)
     newKey.setAttribute("placeholder", "key");
     newKey.setAttribute("type", "text");
 
@@ -49,6 +48,29 @@ function addKeyValue(event) {
 
 function generateJson(event) {
     event.preventDefault();
+
+    // if key is empty, throw error
+    let key = document.querySelectorAll('.key')
+    console.log("Key Length: ", key.length)
+
+    for (var i = 0; i < key.length; i++) {
+        console.log("Value: ", key[i].value)
+        if (!key[i].value) {
+            console.log('key-value is empty')
+            alert('please remove unused inputs')
+            return
+
+        }
+
+        //         if (key.value.length === 0) {
+        //             return
+        //         } else {
+        // 
+        //             // console.log(key[i].value.length)
+        //         }
+    }
+
+
 
     const outputObj = {};
     const inputs = Array.prototype.slice.call(
@@ -76,8 +98,7 @@ function generateJson(event) {
 
 function deleteItem(itemId, formId) {
     event.preventDefault()
-    console.log("item id: ", itemId);
-    console.log("form-group id: ", formId);
+
 
     let deleteDiv = document.querySelector('.kv-pair')
     if (itemId === formId) {
