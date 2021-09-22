@@ -154,7 +154,7 @@ window.addEventListener(
             if (e.target.nodeName == "INPUT" && e.target.type == "text") {
                 e.preventDefault();
                 addBtn.click()
-                return false;
+                // return false;
             }
         }
     },
